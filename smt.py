@@ -2,9 +2,10 @@ import smtplib
 from flask import Flask,render_template,request
 from email.mime.text import MIMEText
 
+# flask 설정
 app=Flask(__name__)
 
-# 시작  페에지 설정 
+# 시작  페이지 설정 
 @app.route("/",methods=['GET'])
 def home():
     return render_template('e-mail_test.html')
