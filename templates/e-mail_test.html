@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST</title>
+</head>
+<body>
+    <h1> e_mail test page </h1>
+    <main>
+        <h4>select</h4>
+        <form id="myForm" action="/send_mail" method="post">
+            <select id="select" name="select" required onchange="this.form.submit()">
+                <option value=""> select</option>
+                <option value="승인"> 승인 </option>
+                <option value="보류"> 보류 </option>
+                <option value="거절"> 거절 </option>
+            </select>
+        </form>
+        {% if msg == '승인' %}
+            <h3>날짜 입력</h3>
+            <form action="/approve" method="post">
+                date <input type="date" id="date" name='date' required><br>
+                time <input type="time" id="time" name='time' required><br>
+                <input type="submit" value="Submit">
+            </form>
+        {% endif %}
+        {% if msg == '보류' %}
+            <h3>보류</h3>
+            <form action="/Defer" method="post">
+                <select id="Defer" name="Defer" required>
+                    <option value=""> select</option>
+                    <option value="a"> a </option>
+                    <option value="b"> b </option>
+                    <option value="c"> c </option>
+                </select>
+                <input type="submit" value="Submit">
+            </form>
+        {% endif %}
+        {% if msg == '거절' %}
+            <h3>거절</h3>
+            <form action="/reject" method="post">
+                <select id="reject" name="reject" required>
+                    <option value=""> select</option>
+                    <option value="a"> a </option>
+                    <option value="b"> b </option>
+                    <option value="c"> c </option>
+                </select>
+                <input type="submit" value="Submit">
+            </form>
+        {% endif %}
+    </main>
+</html>
