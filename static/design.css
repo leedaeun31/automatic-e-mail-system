@@ -1,0 +1,82 @@
+/* 기본적인 전체 스타일 설정 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* 페이지 제목 스타일 */
+h1 {
+    text-align: center;
+    margin-top: 30px;
+    color: #444;
+}
+
+/* 메인 컨테이너 스타일 */
+main {
+    width: 60%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* 섹션 제목 스타일 */
+h3 {
+    margin-top: 30px;
+    color: #555;
+}
+
+/* 폼 요소 기본 스타일 */
+form {
+    margin-top: 20px;
+}
+
+select, input[type="date"], input[type="time"], input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* 선택 메뉴 스타일 */
+select {
+    background-color: #fff;
+}
+
+/* 서브밋 버튼 스타일 */
+input[type="submit"] {
+    background-color: #b7a5f7;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #4c88ae;
+}
+
+/* 반응형 디자인 설정 */
+@media (max-width: 768px) {
+    main {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    select, input[type="date"], input[type="time"], input[type="submit"] {
+        font-size: 14px;
+    }
+}

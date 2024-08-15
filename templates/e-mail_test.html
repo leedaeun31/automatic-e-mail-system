@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TEST</title>
+    <!-- html과 css 연결 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='design.css') }}">
+    <!-- 이메일 전송 완료를 알리기 위하여 팝업을 띄우기 위해 javascript 사용 -->
+    <script>
+        function showPopup(){
+            alert("이메일 전송 완료" )
+        }
+    </script>
 </head>
 <body>
     <h1> e_mail test page </h1>
@@ -19,7 +27,7 @@
         </form>
         {% if msg == '승인' %}
             <h3>날짜 입력</h3>
-            <form action="/approve" method="post">
+            <form action="/approve" method="post" onsubmit="showPopup()">
                 date <input type="date" id="date" name='date' required><br>
                 time <input type="time" id="time" name='time' required><br>
                 <input type="submit" value="Submit">
@@ -27,7 +35,7 @@
         {% endif %}
         {% if msg == '보류' %}
             <h3>보류</h3>
-            <form action="/Defer" method="post">
+            <form action="/Defer" method="post" onsubmit="showPopup()">
                 <select id="Defer" name="Defer" required>
                     <option value=""> select</option>
                     <option value="a"> a </option>
@@ -39,7 +47,7 @@
         {% endif %}
         {% if msg == '거절' %}
             <h3>거절</h3>
-            <form action="/reject" method="post">
+            <form action="/reject" method="post" onsubmit="showPopup()" >
                 <select id="reject" name="reject" required>
                     <option value=""> select</option>
                     <option value="a"> a </option>
