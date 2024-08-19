@@ -38,6 +38,7 @@ def get_table():
             us_name=userdb[userdb['user_id'] == order_user_id]['name'].values
             print_us_name.append(us_name[0])
     
+    # 새로운 DataFrame 생성
     df=pd.DataFrame({
         'order_id': order_order_id,
         'product_id' : print_pr_name,
@@ -46,6 +47,7 @@ def get_table():
         'quantity' : order_quantity
     })
 
+    # html로 전송
     html_table = df.to_html(index=False, classes='table table-striped')
 
     return html_table
@@ -75,12 +77,12 @@ def approve():
     smtp.starttls()
 
     # 보낼 계정
-    smtp.login('20221110@edu.hanbat.ac.kr','dcbv eokd guhw nttn')
+    smtp.login('e-mail to be send','your e-mail pw')
 
     send_msg=MIMEText(f"Delivery Date : {msg} Delivery Time : {time}") # 전송할 메시지 내용
     send_msg['Subject']="Approve" # 전송할 메시지 제목 
     # 보내는 사람 이메일 주소 , 받는 사람 이메일 주소 , 설정 
-    smtp.sendmail('20221110@edu.hanbat.ac.kr','idy1618@naver.com',send_msg.as_string())
+    smtp.sendmail('e-mail to be send','e-mail to be receive',send_msg.as_string())
     
     # smtp 종류
     smtp.quit()
@@ -96,11 +98,11 @@ def Defer():
     smtp.starttls()
 
     # 보낼 계정
-    smtp.login('20221110@edu.hanbat.ac.kr','dcbv eokd guhw nttn')
+    smtp.login('e-mail to be send','your e-mail pw')
 
     send_msg=MIMEText(f"Reasons for suspension: {msg}")
     send_msg['Subject']="Defer"
-    smtp.sendmail('20221110@edu.hanbat.ac.kr','idy1618@naver.com',send_msg.as_string())
+    smtp.sendmail('e-mail to be send','e-mail to be receive',send_msg.as_string())
     
     smtp.quit()
     html_table = get_table()
@@ -115,11 +117,11 @@ def reject():
     smtp.starttls()
 
     # 보낼 계정
-    smtp.login('20221110@edu.hanbat.ac.kr','dcbv eokd guhw nttn')
+    smtp.login('e-mail to be send','your e-mail pw')
 
     send_msg=MIMEText(f"Reasons for Reject: {msg}")
     send_msg['Subject']="Reject"
-    smtp.sendmail('20221110@edu.hanbat.ac.kr','idy1618@naver.com',send_msg.as_string())
+    smtp.sendmail('e-mail to be send','e-mail to be receive',send_msg.as_string())
     
     smtp.quit()
     html_table = get_table()
