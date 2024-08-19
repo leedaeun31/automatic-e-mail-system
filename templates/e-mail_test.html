@@ -7,9 +7,11 @@
     <!-- html과 css 연결 -->
     <link rel="stylesheet" href="{{ url_for('static', filename='design.css') }}">
     <!-- 이메일 전송 완료를 알리기 위하여 팝업을 띄우기 위해 javascript 사용 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/2.0.6/pure-min.css">
+
     <script>
         function showPopup(){
-            alert("이메일 전송 완료" )
+            alert("E-mail transmission complete" )
         }
     </script>
 </head>
@@ -20,21 +22,21 @@
         <form id="myForm" action="/send_mail" method="post">
             <select id="select" name="select" required onchange="this.form.submit()">
                 <option value=""> select</option>
-                <option value="승인"> 승인 </option>
-                <option value="보류"> 보류 </option>
-                <option value="거절"> 거절 </option>
+                <option value="Approve"> Approve </option>
+                <option value="Defer"> Defer </option>
+                <option value="Reject"> Reject </option>
             </select>
         </form>
-        {% if msg == '승인' %}
-            <h3>날짜 입력</h3>
+        {% if msg == 'Approve' %}
+            <h3>Input Day</h3>
             <form action="/approve" method="post" onsubmit="showPopup()">
                 date <input type="date" id="date" name='date' required><br>
                 time <input type="time" id="time" name='time' required><br>
                 <input type="submit" value="Submit">
             </form>
         {% endif %}
-        {% if msg == '보류' %}
-            <h3>보류</h3>
+        {% if msg == 'Defer' %}
+            <h3>Defer</h3>
             <form action="/Defer" method="post" onsubmit="showPopup()">
                 <select id="Defer" name="Defer" required>
                     <option value=""> select</option>
@@ -45,8 +47,8 @@
                 <input type="submit" value="Submit">
             </form>
         {% endif %}
-        {% if msg == '거절' %}
-            <h3>거절</h3>
+        {% if msg == 'Reject' %}
+            <h3>Reject</h3>
             <form action="/reject" method="post" onsubmit="showPopup()" >
                 <select id="reject" name="reject" required>
                     <option value=""> select</option>
@@ -57,5 +59,14 @@
                 <input type="submit" value="Submit">
             </form>
         {% endif %}
+        
+        <h2>Combined Table</h2>
+        <div class="container">
+            <h1 class="mt-5">Information Table</h1>
+            <div class="table-responsive">
+                {{ table|safe }}
+            </div>
+        </div>
     </main>
+    
 </html>
