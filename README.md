@@ -129,4 +129,4 @@ def get_table():
 
 ## Additional Information
 
-The Korean README file can be found '' [README_KR](https://github.com/username/repository/blob/main/README_EN.md) '' .
+The Korean README file can be found '' [README_KR](https://github.com/leedaeun31/automatic-e-mail-system/blob/min/README_EN.md) '' .

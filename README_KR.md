@@ -122,4 +122,4 @@
     => 다른 경우도 비슷하다 
 
 ## 추가 사항
-영문으로된 README 파일은 ''[README_EN](https://github.com/username/repository/blob/main/README_EN.md) '' 여기서 확인 가능합니다.
+영문으로된 README 파일은 ''[README_EN](https://github.com/username/repository/blob/main/README.md) '' 여기서 확인 가능합니다.
