@@ -47,53 +47,53 @@ This project is a Flask-based web application that sends email notifications bas
 
 1. **Code Breakdown by Feature**
     ```pyhon
-import pandas as pd
+    import pandas as pd
 
-def get_table():
-    orderdb = pd.read_csv('OrderDB.csv')
-    productdb = pd.read_csv('ProductDB.csv')
-    userdb = pd.read_csv('UserDB.csv')
+    def get_table():
+        orderdb = pd.read_csv('OrderDB.csv')
+        productdb = pd.read_csv('ProductDB.csv')
+        userdb = pd.read_csv('UserDB.csv')
+    
+        order_product_ids = orderdb['product_id'].unique()  # product IDs from orderdb
+        product_ids = productdb['product_id'].unique()  # product IDs from productdb
+        order_user_ids = orderdb['user_id'].unique()  # user IDs from orderdb
+        user_user_ids = userdb['user_id'].unique()  # user IDs from userdb
+    
+        order_order_id = orderdb['order_id'].unique()  # order IDs from orderdb
+        order_quantity = orderdb['quantity'].unique()  # quantities from orderdb
+    
+        print_pr_name = []
+        print_color = []
+        print_us_name = []
 
-    order_product_ids = orderdb['product_id'].unique()  # product IDs from orderdb
-    product_ids = productdb['product_id'].unique()  # product IDs from productdb
-    order_user_ids = orderdb['user_id'].unique()  # user IDs from orderdb
-    user_user_ids = userdb['user_id'].unique()  # user IDs from userdb
-
-    order_order_id = orderdb['order_id'].unique()  # order IDs from orderdb
-    order_quantity = orderdb['quantity'].unique()  # quantities from orderdb
-
-    print_pr_name = []
-    print_color = []
-    print_us_name = []
-
-    # Extract product names and colors corresponding to product IDs in orderdb
-    for order_product_id in order_product_ids:
-        if order_product_id in product_ids:
-            pr_name = productdb[productdb['product_id'] == order_product_id]['name'].values
-            color = productdb[productdb['product_id'] == order_product_id]['color'].values
-            print_pr_name.append(pr_name[0])
-            print_color.append(color[0])
-
-    # Extract user names corresponding to user IDs in orderdb
-    for order_user_id in order_user_ids:
-        if order_user_id in user_user_ids:
-            us_name = userdb[userdb['user_id'] == order_user_id]['name'].values
-            print_us_name.append(us_name[0])
-
-    # Create a new DataFrame
-    df = pd.DataFrame({
-        'order_id': order_order_id,
-        'product_id': print_pr_name,
-        'product_colors': print_color,
-        'user_name': print_us_name,
-        'quantity': order_quantity
-    })
-
-    # Send as HTML
-    html_table = df.to_html(index=False, classes='table table-striped')
-    return html_table
-
-    *Tip: You can simplify the table generation using map functions.*
+        # Extract product names and colors corresponding to product IDs in orderdb
+        for order_product_id in order_product_ids:
+            if order_product_id in product_ids:
+                pr_name = productdb[productdb['product_id'] == order_product_id]['name'].values
+                color = productdb[productdb['product_id'] == order_product_id]['color'].values
+                print_pr_name.append(pr_name[0])
+                print_color.append(color[0])
+    
+        # Extract user names corresponding to user IDs in orderdb
+        for order_user_id in order_user_ids:
+            if order_user_id in user_user_ids:
+                us_name = userdb[userdb['user_id'] == order_user_id]['name'].values
+                print_us_name.append(us_name[0])
+    
+        # Create a new DataFrame
+        df = pd.DataFrame({
+            'order_id': order_order_id,
+            'product_id': print_pr_name,
+            'product_colors': print_color,
+            'user_name': print_us_name,
+            'quantity': order_quantity
+        })
+    
+        # Send as HTML
+        html_table = df.to_html(index=False, classes='table table-striped')
+        return html_table
+    
+        *Tip: You can simplify the table generation using map functions.*
 
 2. **Tip: You can simplify the table generation using map functions.**
 
